@@ -42,14 +42,21 @@ class _SplashScreenState extends State<SplashScreen> {
               Text(
                 'L',
                 style: TextStyle(
-                  fontSize: 100,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 120,
+                  fontWeight: FontWeight.w900,
                   color: Colors.white,
+                  shadows: [
+                    Shadow(
+                      blurRadius: 10.0,
+                      color: Color.fromRGBO(0, 0, 0, 0.5),
+                      offset: Offset(5, 5),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(height: 20),
               Text(
-                'Nama aplikasi Lumina',
+                'LUMINA',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.normal,

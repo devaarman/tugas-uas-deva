@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'kelas_saya_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,7 +15,13 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _selectedIndex = index;
     });
-    // Handle navigation here if needed
+    if (index == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const KelasSayaScreen()),
+      );
+    }
+    // Handle other navigations if needed
   }
 
   @override

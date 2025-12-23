@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -27,16 +28,52 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(50),
-                bottomRight: Radius.circular(50),
-              ),
-              child: Image.network(
-                'https://via.placeholder.com/400x200?text=School+Photo',
-                height: 200,
-                width: double.infinity,
-                fit: BoxFit.cover,
+            GestureDetector(
+              onTap: () async {
+                const url = 'https://id.pinterest.com/pin/107523509847501524/';
+                final uri = Uri.parse(url);
+                if (await canLaunchUrl(uri)) {
+                  await launchUrl(uri);
+                }
+              },
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(50),
+                  bottomRight: Radius.circular(50),
+                ),
+                child: Image.network(
+                  'https://id.pinterest.com/pin/107523509847501524/',
+                  height: 200,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return Container(
+                      height: 200,
+                      color: const Color(0xFFFFF8E1),
+                      child: const Center(
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF5D4037)),
+                        ),
+                      ),
+                    );
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      height: 200,
+                      color: const Color(0xFFFFF8E1),
+                      child: const Center(
+                        child: Text(
+                          'School Image',
+                          style: TextStyle(
+                            color: Color(0xFF5D4037),
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
             Padding(

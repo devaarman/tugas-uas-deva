@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -35,15 +36,15 @@ class _SplashScreenState extends State<SplashScreen> {
             end: Alignment.bottomCenter,
           ),
         ),
-        child: const Center(
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'L',
-                style: TextStyle(
+                'LMN',
+                style: GoogleFonts.bebasNeue(
                   fontSize: 120,
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.normal,
                   color: Colors.white,
                   shadows: [
                     Shadow(
@@ -54,8 +55,8 @@ class _SplashScreenState extends State<SplashScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'LUMINA',
                 style: TextStyle(
                   fontSize: 24,
@@ -63,8 +64,8 @@ class _SplashScreenState extends State<SplashScreen> {
                   color: Colors.white,
                 ),
               ),
-              SizedBox(height: 10),
-              Text(
+              const SizedBox(height: 10),
+              const Text(
                 'Terangi Jalan Belajarmu',
                 style: TextStyle(
                   fontSize: 16,

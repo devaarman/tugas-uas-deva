@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'kelas_saya_screen.dart';
 import 'notifikasi_screen.dart';
+import 'pengumuman_screen.dart';
 import 'profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -175,7 +176,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PengumumanScreen()),
+                  );
+                },
                 child: const Text(
                   'Lihat Semua',
                   style: TextStyle(
@@ -187,20 +193,58 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           const SizedBox(height: 16),
-          Card(
-            elevation: 2,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            color: Colors.white,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.network(
-                'https://via.placeholder.com/400x150?text=Announcement+Image',
-                height: 150,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
+          Container(
+            height: 200, // Ukuran kolom tidak terlalu besar
+            child: ListView.builder(
+              itemCount: 3, // Tampilkan 3 pengumuman terakhir
+              itemBuilder: (context, index) {
+                final announcements = [
+                  {
+                    'title': 'Maintenance Pra UAS Semester Genap 2020/2021',
+                    'info': 'By Admin Celoe - Rabu, 2 Juni 2021, 10:45'
+                  },
+                  {
+                    'title': 'Pengumuman Maintenance',
+                    'info': 'By Admin Celoe - Rabu, 2 Juni 2021, 10:45'
+                  },
+                  {
+                    'title': 'Maintenance Pra UAS Semester Ganjil 2020/2021',
+                    'info': 'By Admin Celoe - Rabu, 2 Juni 2021, 10:45'
+                  },
+                ];
+                final announcement = announcements[index];
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  child: Row(
+                    children: [
+                      Icon(Icons.campaign, size: 30, color: Colors.grey),
+                      SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              announcement['title']!,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            ),
+                            SizedBox(height: 2),
+                            Text(
+                              announcement['info']!,
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           ),
           const SizedBox(height: 32),

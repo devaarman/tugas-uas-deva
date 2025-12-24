@@ -11,6 +11,44 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   int _selectedIndex = 0;
 
+  final List<Map<String, String>> classes = [
+    {
+      'name': 'BAHASA INGGRIS: BUSINESS AND SCIENTIFIC',
+      'code': 'D4SM-41-GABI [ARS]',
+      'date': 'Monday, 8 February 2021',
+    },
+    {
+      'name': 'DESAIN ANTARMUKA & PENGALAMAN PENGGUNA',
+      'code': 'D4SM-41-DAPU [ARS]',
+      'date': 'Monday, 8 February 2021',
+    },
+    {
+      'name': 'KEWARGANEGARAAN',
+      'code': 'D4SM-41-KEWA [ARS]',
+      'date': 'Monday, 8 February 2021',
+    },
+    {
+      'name': 'SYSTEM CYBER',
+      'code': 'D3TT-44-02-OLAH [ARS]',
+      'date': 'Monday, 8 February 2021',
+    },
+    {
+      'name': 'PEMROGRAMAN MULTIMEDIA INTERAKTIF',
+      'code': 'D4SM-41-PMI [ARS]',
+      'date': 'Monday, 8 February 2021',
+    },
+    {
+      'name': 'PEMROGRAMAN PERANGKAT BERGERAK MULTIMEDIA',
+      'code': 'D4SM-41-PPBM [ARS]',
+      'date': 'Monday, 8 February 2021',
+    },
+    {
+      'name': 'SISTEM OPERASI',
+      'code': 'D4SM-41-SO [ARS]',
+      'date': 'Monday, 8 February 2021',
+    },
+  ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -134,7 +172,63 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             // Kelas Tab
-            const Center(child: Text('Kelas Content')),
+            ListView.builder(
+              itemCount: classes.length,
+              itemBuilder: (context, index) {
+                final classItem = classes[index];
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.lightBlue[100],
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: const Icon(
+                          Icons.school,
+                          color: Colors.blue,
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              classItem['name']!,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              classItem['code']!,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              'Tanggal Mulai ${classItem['date']!}',
+                              style: const TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
             // Edit Profile Tab
             const Center(child: Text('Edit Profile Content')),
           ],

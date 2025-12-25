@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'upload_file_screen.dart';
 
 class DetailTugasScreen extends StatelessWidget {
   const DetailTugasScreen({super.key});
@@ -99,7 +100,10 @@ class DetailTugasScreen extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  // TODO: Implement add task functionality
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const UploadFileScreen()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.grey[300], // Light gray

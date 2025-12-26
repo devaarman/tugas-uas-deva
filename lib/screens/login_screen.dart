@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             GestureDetector(
               onTap: () async {
-                const url = 'https://id.pinterest.com/pin/107523509847501524/';
+                const url = 'https://images.unsplash.com/photo-1592066575517-58df903152f2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2VkdW5nJTIwc2Vrb2xhaHxlbnwwfHwwfHx8MA%3D%3D';
                 final uri = Uri.parse(url);
                 if (await canLaunchUrl(uri)) {
                   await launchUrl(uri);
@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   bottomRight: Radius.circular(50),
                 ),
                 child: Image.network(
-                  'https://id.pinterest.com/pin/107523509847501524/',
+                  'https://images.unsplash.com/photo-1592066575517-58df903152f2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2VkdW5nJTIwc2Vrb2xhaHxlbnwwfHwwfHx8MA%3D%3D',
                   height: 200,
                   width: double.infinity,
                   fit: BoxFit.cover,
